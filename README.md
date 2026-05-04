@@ -1,375 +1,222 @@
-# 🤖 WhatsApp Bot - LBOT v2.0
+# 🤖 LBOT v2.0 — WhatsApp Bot
 
-Bot profissional de WhatsApp desenvolvido com **Baileys**, apresentando arquitetura modular, dual-mode (zoeiro/profissional) e funcionalidades completas de automação.
+> Professional WhatsApp bot with AI, media downloads, group admin tools and entertainment system.
 
-[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
-[![Baileys](https://img.shields.io/badge/Baileys-6.7.8-blue.svg)](https://github.com/WhiskeySockets/Baileys)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+Built with **Baileys** and a fully modular architecture. Features dual-mode behavior — casual in groups, professional in private chats.
 
-## 📋 Índice
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![Baileys](https://img.shields.io/badge/Baileys-6.7.8-blue?style=flat-square)](https://github.com/WhiskeySockets/Baileys)
+[![OpenAI](https://img.shields.io/badge/OpenAI-GPT-412991?style=flat-square&logo=openai&logoColor=white)](https://openai.com)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
-- [Características](#-características)
-- [Funcionalidades](#-funcionalidades)
-- [Pré-requisitos](#-pré-requisitos)
-- [Instalação](#-instalação)
-- [Configuração](#️-configuração)
-- [Como Usar](#-como-usar)
-- [Comandos](#-comandos)
-- [Estrutura do Projeto](#-estrutura-do-projeto)
-- [Deploy](#-deploy)
-- [Troubleshooting](#-troubleshooting)
-- [Contribuindo](#-contribuindo)
+---
 
-## ✨ Características
+## 📱 Preview
 
-- 🎭 **Dual Mode Automático**: Modo zoeiro em grupos, profissional em conversas privadas
-- 🤖 **Integração com IA**: OpenAI GPT para conversas inteligentes
-- 📥 **Download de Mídia**: YouTube, TikTok, Instagram
-- 🎨 **Criação de Stickers**: Imagens e vídeos animados
-- 🔍 **Busca Inteligente**: Google, imagens e vídeos
-- 👑 **Administração de Grupos**: Ban, kick, promote, demote
-- 🛡️ **Proteção**: Anti-spam e anti-link configuráveis
-- 💰 **Sistema de Economia**: Moedas, ranking, recompensas
-- 📊 **Logs Completos**: Sistema de logging profissional
-- 🔧 **Arquitetura Modular**: Código limpo e escalável
+![LBOT v2.0 Preview](portfolio_thumbnail.png)
 
-## 🚀 Funcionalidades
+*AI answering questions in natural language + image generation on demand*
 
-### Comandos Gerais
-- Menu interativo
-- Sistema de ajuda
-- Ping/latência
-- Informações do bot
+---
 
-### Mídia
-- Download de YouTube (MP3/MP4)
-- Download de TikTok
-- Download de Instagram
-- Criação de figurinhas
+## Features
 
-### Busca
-- Busca no Google
-- Busca de imagens
-- Busca de vídeos
+- 🎭 **Dual Mode** — casual in groups, professional in DMs, automatically
+- 🤖 **AI Chat** — OpenAI GPT for natural conversations
+- 🎨 **Image Generation** — generate images on demand via `/imagem [prompt]`
+- 📥 **Media Downloads** — YouTube (MP3/MP4), TikTok, Instagram
+- 🎯 **Sticker Maker** — create stickers from images and videos
+- 🔍 **Smart Search** — Google, images, videos
+- 👑 **Group Admin** — ban, promote, demote, anti-link, anti-spam
+- 💰 **Economy System** — coins, daily rewards, leaderboard
+- 📊 **Full Logging** — professional log system
 
-### Admin
-- Banir/remover usuários
-- Promover/rebaixar admins
-- Anti-link configurável
-- Anti-spam automático
+---
 
-### Diversão
-- Ship (compatibilidade)
-- Economia (moedas)
-- Ranking
-- Recompensa diária
+## Commands
 
-### IA
-- Chat com GPT
-- Modo duplo (zoeiro/profissional)
+### General
+```
+!menu         List all commands
+!ping         Bot latency
+!info         Bot information
+```
 
-## 📦 Pré-requisitos
+### AI
+```
+!ai [prompt]          Chat with GPT
+/imagem [prompt]      Generate an image
+```
 
-- **Node.js** 18+ ([Download](https://nodejs.org/))
-- **FFmpeg** ([Instalação](#instalando-ffmpeg))
-- **yt-dlp** ([Instalação](#instalando-yt-dlp))
-- Conta OpenAI (opcional, para IA)
+### Media
+```
+!ytmp3 [url]      Download YouTube audio
+!ytmp4 [url]      Download YouTube video
+!tiktok [url]     Download TikTok video
+!instagram [url]  Download Instagram media
+!sticker          Create sticker (reply to image/video)
+```
 
-### Instalando FFmpeg
+### Search
+```
+!google [term]       Search Google
+!imagem [term]       Search images
+!videosearch [term]  Search videos
+```
 
-**Linux (Ubuntu/Debian):**
+### Admin (admins only)
+```
+!ban @user        Remove member
+!promote @user    Promote to admin
+!demote @user     Demote admin
+!antilink on/off  Toggle anti-link
+```
+
+### Entertainment
+```
+!ship @user1 @user2  Compatibility check
+!saldo               Check your balance
+!daily               Claim daily reward
+!ranking             Top 10 leaderboard
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- FFmpeg
+- yt-dlp
+- OpenAI API key (optional, for AI features)
+
+**Install FFmpeg:**
 ```bash
-sudo apt update
+# Ubuntu/Debian
 sudo apt install ffmpeg
-```
 
-**macOS:**
-```bash
+# macOS
 brew install ffmpeg
+
+# Windows: https://ffmpeg.org/download.html
 ```
 
-**Windows:**
-Baixe em: https://ffmpeg.org/download.html
-
-### Instalando yt-dlp
-
-**Linux/macOS:**
+**Install yt-dlp:**
 ```bash
+# Linux/macOS
 sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
 sudo chmod a+rx /usr/local/bin/yt-dlp
-```
 
-**Windows:**
-```bash
+# Windows
 winget install yt-dlp
 ```
 
-## 🔧 Instalação
-
-### 1. Clone o repositório
+### Installation
 
 ```bash
-git clone https://github.com/seu-usuario/whatsapp-bot-baileys.git
-cd whatsapp-bot-baileys
-```
+# Clone the repo
+git clone https://github.com/tutucanto10/Whatsapp-bot-baileys.git
+cd Whatsapp-bot-baileys
 
-### 2. Instale as dependências
-
-```bash
+# Install dependencies
 npm install
-```
 
-### 3. Configure o arquivo .env
-
-```bash
+# Set up environment
 cp .env.example .env
-nano .env
-```
+# Edit .env with your keys
 
-Edite as variáveis necessárias (veja [Configuração](#️-configuração))
-
-### 4. Inicie o bot
-
-```bash
+# Start the bot
 npm start
 ```
 
-### 5. Escaneie o QR Code
+Then scan the QR code: WhatsApp → **Settings → Linked Devices → Link a Device**
 
-Abra o WhatsApp no celular:
-1. Vá em **Configurações** → **Aparelhos conectados**
-2. Toque em **Conectar um aparelho**
-3. Escaneie o QR Code que apareceu no terminal
-
-## ⚙️ Configuração
-
-Edite o arquivo `.env` com suas configurações:
+### Environment Variables
 
 ```env
-# Informações do Bot
 BOT_NAME=LBOT v2.0
 PREFIX=!
-OWNER_NUMBER=5511999999999
+OWNER_NUMBER=your_number
 
-# IA (OpenAI)
-OPENAI_API_KEY=sk-seu-token-aqui
+OPENAI_API_KEY=your_openai_key
 AI_MODEL=gpt-3.5-turbo
 ENABLE_AI=true
 
-# Funcionalidades
 ENABLE_DOWNLOADS=true
 ENABLE_STICKERS=true
 ENABLE_ANTI_SPAM=true
 ENABLE_ANTI_LINK=true
 
-# Anti-Spam
 MAX_MESSAGES_PER_MINUTE=10
 SPAM_BAN_DURATION=300000
-
-# Banco de Dados
-DB_TYPE=json
 ```
-
-### Obtendo API Keys
-
-**OpenAI (para IA):**
-1. Acesse: https://platform.openai.com/
-2. Crie uma conta
-3. Vá em API Keys
-4. Crie uma nova chave
-
-## 📱 Como Usar
-
-### Desenvolvimento
-
-```bash
-npm run dev
-```
-
-### Produção
-
-```bash
-npm start
-```
-
-### Limpar dados
-
-```bash
-npm run clean
-```
-
-## 📖 Comandos
-
-### Geral
-```
-!menu - Lista todos os comandos
-!ping - Velocidade do bot
-!help - Ajuda
-!info - Informações do bot
-```
-
-### Mídia
-```
-!ytmp3 [url] - Baixar áudio do YouTube
-!ytmp4 [url] - Baixar vídeo do YouTube
-!tiktok [url] - Baixar vídeo do TikTok
-!instagram [url] - Baixar mídia do Instagram
-!sticker - Criar figurinha (responda a imagem/vídeo)
-```
-
-### Busca
-```
-!google [termo] - Buscar no Google
-!imagem [termo] - Buscar imagens
-!videosearch [termo] - Buscar vídeos
-```
-
-### Admin (apenas admins)
-```
-!ban @usuario - Banir membro
-!promote @usuario - Promover a admin
-!demote @usuario - Rebaixar admin
-!antilink on/off - Ativar/desativar anti-link
-```
-
-### Diversão
-```
-!ship @user1 @user2 - Shippar usuários
-!saldo - Ver seu saldo
-!daily - Recompensa diária
-!ranking - Top 10 usuários
-```
-
-### IA
-```
-!ai [pergunta] - Conversar com IA
-!gpt [pergunta] - Chat GPT
-```
-
-## 🏗️ Estrutura do Projeto
-
-```
-whatsapp-bot-baileys/
-├── src/
-│   ├── commands/          # Comandos do bot
-│   │   ├── admin/         # Comandos de administração
-│   │   ├── entertainment/ # Comandos de diversão
-│   │   ├── general/       # Comandos gerais
-│   │   ├── media/         # Downloads e stickers
-│   │   └── search/        # Buscas
-│   ├── services/          # Serviços (IA, downloads, etc)
-│   ├── middlewares/       # Anti-spam, anti-link
-│   ├── utils/             # Utilitários
-│   ├── database/          # Sistema de dados
-│   ├── config/            # Configurações
-│   ├── bot.js             # Configuração do Baileys
-│   ├── handler.js         # Roteamento de mensagens
-│   └── index.js           # Ponto de entrada
-├── sessions/              # Sessão do WhatsApp
-├── temp/                  # Arquivos temporários
-├── logs/                  # Logs do bot
-├── .env                   # Variáveis de ambiente
-├── package.json
-└── README.md
-```
-
-## 🌐 Deploy
-
-### Render
-
-1. Crie uma conta em [render.com](https://render.com)
-2. Clique em "New +" → "Web Service"
-3. Conecte seu repositório GitHub
-4. Configure:
-   - **Build Command:** `npm install`
-   - **Start Command:** `npm start`
-5. Adicione as variáveis de ambiente do `.env`
-6. Clique em "Create Web Service"
-
-### Railway
-
-1. Acesse [railway.app](https://railway.app)
-2. Clique em "New Project" → "Deploy from GitHub repo"
-3. Selecione o repositório
-4. Adicione as variáveis de ambiente
-5. Deploy automático!
-
-### VPS (Linux)
-
-```bash
-# Instalar Node.js
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install -y nodejs
-
-# Clonar projeto
-git clone seu-repo
-cd whatsapp-bot-baileys
-npm install
-
-# Instalar PM2
-npm install -g pm2
-
-# Iniciar com PM2
-pm2 start src/index.js --name whatsapp-bot
-pm2 save
-pm2 startup
-```
-
-## 🔍 Troubleshooting
-
-### Erro ao conectar
-
-```bash
-# Limpe a sessão e reconecte
-rm -rf sessions/
-npm start
-```
-
-### Erro de dependências
-
-```bash
-rm -rf node_modules package-lock.json
-npm install
-```
-
-### FFmpeg não encontrado
-
-Certifique-se de que o FFmpeg está instalado:
-```bash
-ffmpeg -version
-```
-
-### yt-dlp não funciona
-
-Atualize o yt-dlp:
-```bash
-sudo yt-dlp -U
-```
-
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas!
-
-1. Fork o projeto
-2. Crie uma branch (`git checkout -b feature/NovaFuncionalidade`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/NovaFuncionalidade`)
-5. Abra um Pull Request
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 👨‍💻 Autor
-
-Desenvolvido com ❤️ por [Seu Nome]
-
-## 🙏 Agradecimentos
-
-- [Baileys](https://github.com/WhiskeySockets/Baileys) - Biblioteca WhatsApp Web
-- [OpenAI](https://openai.com) - API de IA
-- Comunidade open-source
 
 ---
 
-⭐ Se este projeto foi útil, deixe uma estrela!
+## Project Structure
+
+```
+src/
+├── commands/
+│   ├── admin/          # Ban, promote, demote, anti-link
+│   ├── entertainment/  # Economy, ranking, ship
+│   ├── general/        # Menu, ping, info
+│   ├── media/          # Downloads, stickers
+│   └── search/         # Google, images, videos
+├── services/           # AI, media, search services
+├── middlewares/        # Anti-spam, anti-link
+├── database/           # JSON data layer
+├── utils/              # Logger, helpers
+├── bot.js              # Baileys setup
+├── handler.js          # Message routing
+└── index.js            # Entrypoint
+```
+
+---
+
+## Deploy
+
+### Railway (recommended)
+1. Push to GitHub
+2. Connect repo on [railway.app](https://railway.app)
+3. Add environment variables
+4. Deploy automatically
+
+### VPS (Linux)
+```bash
+npm install -g pm2
+pm2 start src/index.js --name lbot
+pm2 save && pm2 startup
+```
+
+---
+
+## Troubleshooting
+
+```bash
+# Session issues — clear and reconnect
+rm -rf sessions/ && npm start
+
+# Dependency issues
+rm -rf node_modules package-lock.json && npm install
+
+# Check FFmpeg
+ffmpeg -version
+
+# Update yt-dlp
+sudo yt-dlp -U
+```
+
+---
+
+## Author
+
+**Artur Canto** — Python Backend Developer  
+[LinkedIn](https://www.linkedin.com/in/artur-canto-90bb1b224) · [Portfolio](https://devportfolio-puce-two.vercel.app/) · [GitHub](https://github.com/tutucanto10)
+
+---
+
+⭐ If you found this project helpful, please leave a star!
+
+<sub>Built from scratch. No tutorials. Just code.</sub>
