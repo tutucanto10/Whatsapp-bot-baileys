@@ -1,0 +1,11 @@
+node_modules/
+sessions/
+temp/
+logs/
+.env
+*.log
+.DS_Store
+auth_info_baileys/
+package-lock.json
+yarn.lock
+src/database/data/
